@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type SubmitEvent } from "react";
+import { services } from "./services";
 
 const recipient = "finnjarl@outlook.com";
 
@@ -48,10 +49,7 @@ export default function ContactForm() {
         <label className="form-wide"><span>Hva gjelder det? *</span>
           <select name="service" defaultValue="" required>
             <option value="" disabled>Velg område</option>
-            <option>Foredrag og konferansiering</option>
-            <option>Sponsorarbeid og management</option>
-            <option>Aktiviteter og event</option>
-            <option>Rådgivning i fotball</option>
+            {services.map((service) => <option key={service.id}>{service.title}</option>)}
           </select>
         </label>
         <label><span>Dato, hvis relevant</span><input name="date" type="date" /></label>
@@ -61,7 +59,6 @@ export default function ContactForm() {
         </label>
       </div>
       <button className="contact-form-submit" type="submit">Send <span aria-hidden="true">↗</span></button>
-      <p className="contact-form-note">Skjemaet åpner e-postprogrammet ditt med opplysningene ferdig utfylt. Du sender meldingen derfra. Nettsiden lagrer ingenting.</p>
       {emailOpened && <output className="contact-form-status" aria-live="polite">Kontroller e-posten som åpnes, og trykk Send i e-postprogrammet.</output>}
     </form>
   );
