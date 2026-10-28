@@ -1,41 +1,138 @@
+import ServiceTopics from "./ServiceTopics";
+
+const sectionLinks = {
+  top: "#topp",
+  services: "#tjenester",
+  finn: "#finn",
+  contact: "#kontakt",
+} as const;
+
+function emailFor(subject: string) {
+  return "mailto:finnjarl@outlook.com?subject=" + encodeURIComponent("Arena Consult: " + subject);
+}
+
 const services = [
-  { number: "01", title: "Foredrag & konferansiering", text: "En tydelig inngang for arrangører som trenger en stemme på scenen, et tema eller en trygg konferansier." },
-  { number: "02", title: "Sponsorarbeid & management", text: "Et sted å forklare hvordan utøvere, profiler og samarbeidspartnere kan finne en felles retning." },
-  { number: "03", title: "Aktiviteter som engasjerer", text: "Forslag til opplevelser og møteplasser for butikker, kjøpesentre og arrangementer." },
-  { number: "04", title: "Rådgivning i fotball", text: "En egen vei inn for trenere, spillere og klubber som ønsker å undersøke et samarbeid." },
+  {
+    audience: "FOR ARRANGØRER",
+    title: "Foredrag og konferansiering",
+    description:
+      "Du har dato, sted og publikum. Hvem skal holde foredraget, lede programmet eller samle samtalen på scenen? Beskriv arrangementet og hva du trenger.",
+    subject: "Foredrag eller konferansiering",
+  },
+  {
+    audience: "FOR UTØVERE OG SAMARBEIDSPARTNERE",
+    title: "Sponsorarbeid og management",
+    description:
+      "Arena Consult arbeider med sponsorarbeid for toppidrettsutøvere og management for folk som opptrer på scenen. Ta kontakt om en profil eller et mulig samarbeid.",
+    subject: "Sponsorarbeid eller management",
+  },
+  {
+    audience: "FOR BUTIKKER OG KJØPESENTRE",
+    title: "Aktiviteter og event",
+    description:
+      "Planlegger du en åpning, kampanje eller aktivitetsdag? Fortell hvor det skal skje, hvem dere vil nå og hva slags aktivitet dere ser for dere.",
+    subject: "Aktivitet i butikk eller kjøpesenter",
+  },
+  {
+    audience: "FOR SPILLERE, TRENERE OG KLUBBER",
+    title: "Rådgivning i fotball",
+    description:
+      "For deg som står overfor et valg i fotballen og ønsker å snakke med en rådgiver. Skriv noen linjer om situasjonen, så kan Finn Jarl vurdere om han er rett person å spørre.",
+    subject: "Rådgivning i fotball",
+  },
 ];
 
 export default function Home() {
   return (
     <>
-      <div className="preview-banner">Uforpliktende nettsideskisse · Innhold og uttrykk er ikke godkjent av virksomheten</div>
+      <div className="preview-note">
+        Uforpliktende visuell skisse. Innhold og uttrykk er ikke godkjent av Finn Jarl Treider.
+      </div>
+
       <header className="site-header" id="topp">
-        <a className="brand" href="#topp" aria-label="Arena Consult, til toppen"><span className="brand-mark">A<span>.</span></span><span>ARENA<br />CONSULT</span></a>
-        <nav aria-label="Hovedmeny"><a href="#retning">Retning</a><a href="#omrader">Områder</a><a href="#kontakt">Kontakt</a></nav>
-        <a className="header-cta" href="#kontakt">Start en samtale <span aria-hidden="true">↗</span></a>
+        <a className="brand" href={sectionLinks.top} aria-label="Arena Consult, til toppen">
+          <span className="brand-symbol" aria-hidden="true"><span /></span>
+          <span>ARENA<br />CONSULT</span>
+        </a>
+        <nav aria-label="Hovedmeny">
+          <a href={sectionLinks.services}>Arbeidsområder</a>
+          <a href={sectionLinks.finn}>Finn Jarl</a>
+          <a href={sectionLinks.contact}>Kontakt</a>
+        </nav>
+        <a className="header-contact" href="tel:+4741627277">416 27 277 <span aria-hidden="true">↗</span></a>
       </header>
 
       <main>
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow"><span className="eyebrow-line" /> FOREDRAG · EVENT · RÅDGIVNING</p>
-            <h1 id="hero-title">Gode møter<br />starter med <em>mennesker.</em></h1>
-            <p className="hero-intro">En mulig ny arena for foredrag, konferansiering, sponsorarbeid og rådgivning — samlet rundt det som skaper kontakt og bevegelse.</p>
-            <div className="hero-actions"><a className="button button-light" href="#omrader">Utforsk mulighetene <span aria-hidden="true">↗</span></a><a className="text-link" href="#kontakt">Ta kontakt <span aria-hidden="true">→</span></a></div>
-            <p className="hero-note">Første skisse for Arena Consult Foredrag Event Treider</p>
+          <div className="hero-main">
+            <p className="hero-topline">ARENA CONSULT / FOREDRAG EVENT TREIDER</p>
+            <h1 id="hero-title">Finn Jarl<br /><em>Treider.</em></h1>
+            <div className="hero-bottom">
+              <p>Foredrag og konferansiering. Sponsorarbeid for utøvere. Aktiviteter i butikk og kjøpesenter. Rådgivning i fotball.</p>
+              <a href={sectionLinks.services} className="round-link" aria-label="Se arbeidsområdene"><span aria-hidden="true">↓</span></a>
+            </div>
           </div>
-          <div className="hero-art" aria-hidden="true"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="spotlight" /><div className="stage-line" /><span className="art-word">ARENA</span><span className="art-caption">Ideer. Mennesker. Muligheter.</span></div>
+          <ServiceTopics />
         </section>
 
-        <section className="statement" id="retning"><p className="section-kicker">EN TYDELIG EGEN PROFIL</p><div><h2>Én side. Flere innganger.<br /><span>En klar vei videre.</span></h2><p>Den nye siden bør ikke forsøke å være alt på én gang. Den bør hjelpe riktig besøkende å kjenne seg igjen, forstå hva et samarbeid kan handle om og enkelt starte en samtale. Hvilke områder som skal få størst plass, bestemmer Finn.</p></div></section>
+        <section className="areas" id="tjenester" aria-labelledby="areas-title">
+          <div className="section-index"><span>ARBEIDSOMRÅDER</span><span className="index-line" /></div>
+          <div className="areas-heading">
+            <h2 id="areas-title">Hva gjelder<br />henvendelsen?</h2>
+            <p>Beskriv det du planlegger eller vurderer. Det er nok til å starte en samtale.</p>
+          </div>
+          <div className="area-list">
+            {services.map((service) => (
+              <article className="area-row" key={service.title}>
+                <div className="area-title">
+                  <span>{service.audience}</span>
+                  <h3>{service.title}</h3>
+                </div>
+                <p>{service.description}</p>
+                <a
+                  href={emailFor(service.subject)}
+                  aria-label={`Skriv til Finn Jarl om ${service.subject.toLowerCase()}`}
+                >
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        <section className="services" id="omrader"><div className="section-heading"><div><p className="section-kicker">MULIGE TJENESTEOMRÅDER</p><h2>Velg din inngang.</h2></div><p>Fire retninger fra virksomhetens registrerte aktivitet. Tekst, prioritering og eksempler avklares før en endelig side lages.</p></div><div className="service-grid">{services.map((service) => <article className="service-card" key={service.number}><span className="service-number">{service.number} / 04</span><span className="service-arrow" aria-hidden="true">↗</span><h3>{service.title}</h3><p>{service.text}</p></article>)}</div></section>
+        <section className="intro" id="finn" aria-labelledby="intro-title">
+          <div className="section-index"><span>OM FINN JARL</span><span className="index-line" /></div>
+          <div className="intro-body">
+            <h2 id="intro-title">Finn Jarl er<br /><i>kontaktpersonen.</i></h2>
+            <div className="intro-detail">
+              <div>
+                <p>Finn Jarl Treider er rådgiver og arbeider også med foredragsholdere, idrettsutøvere og artister i Treider Vivliotech. Der presenteres han med over 30 års erfaring.</p>
+                <p>Arena Consult er hans egen virksomhet for foredrag, event, sponsorarbeid og rådgivning i fotball. Du kan ta kontakt med ham direkte.</p>
+                <a className="underlined-link" href="https://treidervivliotech.no/nb/vart-team/" target="_blank" rel="noopener noreferrer">Se Finn Jarl hos Treider Vivliotech <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <section className="feature"><p className="section-kicker">DET SOM GJØR FORSKJELLEN</p><h2>Fra «hva gjør du?»<br />til <em>«dette trenger vi».</em></h2><p>Den ferdige siden kan vise utvalgte temaer, erfaringer, bilder og eksempler — bare materiale Finn selv ønsker å presentere og har godkjent. Målet er relevante henvendelser, ikke mest mulig tekst.</p><div className="feature-rule"><span>01 · Forstå tilbudet</span><span>02 · Se mulighetene</span><span>03 · Ta kontakt</span></div></section>
-
-        <section className="contact" id="kontakt"><div><p className="section-kicker">NESTE STEG</p><h2>Hvilken retning<br />skal vi ta?</h2></div><div className="contact-copy"><p>Dette er en første visuell tanke. En ferdig løsning trenger Finns valg av hovedfokus, innhold og uttrykk. Herfra kan siden gjøres enklere, spissere eller mer personlig.</p><a className="button button-dark" href="mailto:finnjarl@outlook.com?subject=Foresp%C3%B8rsel%20om%20Arena%20Consult">Send en forespørsel <span aria-hidden="true">↗</span></a><p className="contact-note">E-post åpnes i ditt eget e-postprogram. Nettsiden sender ikke skjema eller lagrer opplysninger.</p></div></section>
+        <section className="contact" id="kontakt" aria-labelledby="contact-title">
+          <div className="section-index"><span>KONTAKT</span><span className="index-line" /></div>
+          <div className="contact-content">
+            <div><h2 id="contact-title">Kontakt<br /><i>Finn Jarl.</i></h2></div>
+            <div className="contact-actions">
+              <p>Oppgi gjerne dato og sted hvis det gjelder et arrangement. For andre henvendelser holder det med noen linjer om hva du ønsker å drøfte.</p>
+              <a href="tel:+4741627277" className="contact-primary">416 27 277 <span aria-hidden="true">↗</span></a>
+              <a href="mailto:finnjarl@outlook.com?subject=Foresp%C3%B8rsel%20til%20Arena%20Consult" className="contact-secondary">finnjarl@outlook.com <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div className="contact-bottom"><span>ARENA CONSULT</span><span>FOREDRAG · EVENT · SPORT</span></div>
+        </section>
       </main>
-      <footer><span>Arena Consult Foredrag Event Treider · Org.nr. 938 698 171</span><span>Uforpliktende forslag · 2026</span></footer>
+
+      <footer>
+        <span>Arena Consult Foredrag Event Treider</span>
+        <span>Org.nr. 938 698 171</span>
+        <a href={sectionLinks.top}>Til toppen ↑</a>
+      </footer>
     </>
   );
 }
