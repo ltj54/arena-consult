@@ -6,7 +6,7 @@ const topics = [
   {
     title: "Foredrag",
     description:
-      "Finn Jarl arbeider med formidling av foredragsholdere. På Treider Vivliotech står han oppført som kontaktperson for flere foredragsholdere; hvem som er aktuell for ditt arrangement må avklares med ham.",
+      "Arena Consult er registrert med management for foredragsholdere. Fortell Finn Jarl hva slags foredrag du ser etter, så kan dere avklare aktuelle temaer og muligheter.",
     details: [
       "Hva slags publikum og tema ser du for deg?",
       "Når og hvor skal foredraget holdes?",
@@ -17,7 +17,7 @@ const topics = [
   {
     title: "Konferansiering",
     description:
-      "En konferansier kan lede publikum gjennom programmet, introdusere bidragsytere og holde samtaler på scenen. Finn Jarl er oppført som kontaktperson for konferansierer hos Treider Vivliotech.",
+      "Arena Consult er registrert med management for konferansierer. En konferansier kan lede publikum gjennom programmet og introdusere bidragsytere; beskriv opplegget du planlegger for Finn Jarl.",
     details: [
       "Hva slags arrangement planlegger du?",
       "Hvor lenge varer programmet, og hvor mange skal bidra?",
@@ -80,17 +80,16 @@ export default function ServiceTopics() {
   return (
     <>
       <aside className="hero-side" aria-label="Arbeidsområder">
-        <p className="side-rule">DETTE KAN DU SPØRRE OM</p>
+        <p className="side-rule">VELG ET OMRÅDE FOR DETALJER</p>
         <ul className="hero-service-list">
           {topics.map((topic) => (
             <li key={topic.title}>
               <button type="button" onClick={() => setActiveTopic(topic)} aria-haspopup="dialog">
-                <span>{topic.title}</span><span aria-hidden="true">↗</span>
+                <span>{topic.title}</span><span aria-hidden="true">+</span>
               </button>
             </li>
           ))}
         </ul>
-        <p className="side-foot">ÉN PERSON Å KONTAKTE<br /><strong>FINN JARL TREIDER</strong></p>
       </aside>
 
       <dialog

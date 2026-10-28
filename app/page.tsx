@@ -1,4 +1,5 @@
 import ServiceTopics from "./ServiceTopics";
+import ContactForm from "./ContactForm";
 
 const sectionLinks = {
   top: "#topp",
@@ -6,10 +7,6 @@ const sectionLinks = {
   finn: "#finn",
   contact: "#kontakt",
 } as const;
-
-function emailFor(subject: string) {
-  return "mailto:finnjarl@outlook.com?subject=" + encodeURIComponent("Arena Consult: " + subject);
-}
 
 const services = [
   {
@@ -65,10 +62,10 @@ export default function Home() {
       <main>
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-main">
-            <p className="hero-topline">ARENA CONSULT / FOREDRAG EVENT TREIDER</p>
+            <p className="hero-topline">ARENA CONSULT / FOREDRAG · EVENT · SPORT</p>
             <h1 id="hero-title">Finn Jarl<br /><em>Treider.</em></h1>
             <div className="hero-bottom">
-              <p>Foredrag og konferansiering. Sponsorarbeid for utøvere. Aktiviteter i butikk og kjøpesenter. Rådgivning i fotball.</p>
+              <p>Skal du finne en foredragsholder, planlegge aktivitet i et kjøpesenter, drøfte et sponsorsamarbeid eller ta opp en sak i fotballen? Finn Jarl Treider er kontaktpersonen i Arena Consult.</p>
               <a href={sectionLinks.services} className="round-link" aria-label="Se arbeidsområdene"><span aria-hidden="true">↓</span></a>
             </div>
           </div>
@@ -90,8 +87,8 @@ export default function Home() {
                 </div>
                 <p>{service.description}</p>
                 <a
-                  href={emailFor(service.subject)}
-                  aria-label={`Skriv til Finn Jarl om ${service.subject.toLowerCase()}`}
+                  href={sectionLinks.contact}
+                  aria-label={`Gå til kontaktskjema for ${service.subject.toLowerCase()}`}
                 >
                   <span aria-hidden="true">↗</span>
                 </a>
@@ -106,9 +103,8 @@ export default function Home() {
             <h2 id="intro-title">Finn Jarl er<br /><i>kontaktpersonen.</i></h2>
             <div className="intro-detail">
               <div>
-                <p>Finn Jarl Treider er rådgiver og arbeider også med foredragsholdere, idrettsutøvere og artister i Treider Vivliotech. Der presenteres han med over 30 års erfaring.</p>
-                <p>Arena Consult er hans egen virksomhet for foredrag, event, sponsorarbeid og rådgivning i fotball. Du kan ta kontakt med ham direkte.</p>
-                <a className="underlined-link" href="https://treidervivliotech.no/nb/vart-team/" target="_blank" rel="noopener noreferrer">Se Finn Jarl hos Treider Vivliotech <span aria-hidden="true">↗</span></a>
+                <p>Finn Jarl Treider står som innehaver av Arena Consult. Det er også ham du kontakter om foredrag, event, sponsorarbeid og rådgivning i fotball.</p>
+                <p>Fortell kort hva henvendelsen gjelder, så kan dere avklare om han er rett person å snakke med.</p>
               </div>
             </div>
           </div>
@@ -119,9 +115,12 @@ export default function Home() {
           <div className="contact-content">
             <div><h2 id="contact-title">Kontakt<br /><i>Finn Jarl.</i></h2></div>
             <div className="contact-actions">
-              <p>Oppgi gjerne dato og sted hvis det gjelder et arrangement. For andre henvendelser holder det med noen linjer om hva du ønsker å drøfte.</p>
-              <a href="tel:+4741627277" className="contact-primary">416 27 277 <span aria-hidden="true">↗</span></a>
-              <a href="mailto:finnjarl@outlook.com?subject=Foresp%C3%B8rsel%20til%20Arena%20Consult" className="contact-secondary">finnjarl@outlook.com <span aria-hidden="true">↗</span></a>
+              <ContactForm />
+              <div className="contact-direct">
+                <span>ELLER KONTAKT FINN JARL DIREKTE</span>
+                <a href="tel:+4741627277">416 27 277</a>
+                <a href="mailto:finnjarl@outlook.com">finnjarl@outlook.com</a>
+              </div>
             </div>
           </div>
           <div className="contact-bottom"><span>ARENA CONSULT</span><span>FOREDRAG · EVENT · SPORT</span></div>
@@ -129,8 +128,8 @@ export default function Home() {
       </main>
 
       <footer>
-        <span>Arena Consult Foredrag Event Treider</span>
-        <span>Org.nr. 938 698 171</span>
+        <span>Arena Consult</span>
+        <span>Registrert som Arena Consult Foredrag Event Treider · Org.nr. 938 698 171</span>
         <a href={sectionLinks.top}>Til toppen ↑</a>
       </footer>
     </>

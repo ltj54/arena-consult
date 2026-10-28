@@ -1,6 +1,6 @@
 # Arena Consult – første nettsideskisse
 
-Selvstendig, statisk Next.js 16/React 19/TypeScript-prosjekt for en uforpliktende visuell skisse til Arena Consult Foredrag Event Treider. Planlagt offentlig testadresse: https://ltj54.github.io/arena-consult/. Dette er ikke en godkjent kundeside eller bestilling.
+Selvstendig, statisk Next.js 16/React 19/TypeScript-prosjekt for en uforpliktende visuell skisse til Arena Consult Foredrag Event Treider. Offentlig testadresse: https://ltj54.github.io/arena-consult/. Dette er ikke en godkjent kundeside eller bestilling.
 
 ## Lokalt
 
@@ -10,6 +10,6 @@ Krever Node.js og npm. Kjør `npm install`, `npm run dev`, `npm run lint` og `np
 
 ## Publisering
 
-Første publisering skjer med en kontrollert commit og push til `https://github.com/ltj54/arena-consult`; GitHub Actions bygger og publiserer `out/` på GitHub Pages. Lokale utviklingskommandoer gjør aldri commit eller push. Etter første publisering blir nye endringer lokale inntil Lars uttrykkelig ber om en ny commit og push.
+GitHub Actions bygger og publiserer `out/` på GitHub Pages etter push til `https://github.com/ltj54/arena-consult`. Lokale utviklingskommandoer gjør aldri commit eller push. Nye endringer blir lokale inntil Lars uttrykkelig ber om en ny commit og push.
 
-Ikke legg private e-poster, avtaler, fakturaer, kundebilder uten samtykke eller hemmeligheter i repository. Ingen aktivt kontaktskjema, backend, analyse eller datalagring er opprettet.
+Ikke legg private e-poster, avtaler, fakturaer, kundebilder uten samtykke eller hemmeligheter i repository. Kontaktskjemaet åpner en ferdig utfylt melding i besøkendes e-postprogram; det sender ikke fra nettsiden. Ingen backend, analyse eller datalagring er opprettet.
